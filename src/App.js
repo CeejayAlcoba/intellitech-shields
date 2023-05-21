@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-        <button onClick={() => setUser(user ? null : "Ceejay")}>
+        <button onClick={() => setUser(user ? null : "Wilson")}>
           Test {user}
         </button>
         <AuthorizeRoutes user={user} />

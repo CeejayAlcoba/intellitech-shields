@@ -19,6 +19,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
+      style={{ height: "100vh", overflow: "hidden" }}
     >
       <Menu
         mode="inline"
