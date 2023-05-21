@@ -3,7 +3,8 @@ import { Layout, Dropdown, Menu } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import Swal from "sweetalert2";
 
-const HeaderBar = ({ username }) => {
+const HeaderBar = ({ handleLogout }) => {
+  const user = JSON.parse(localStorage.getItem("user"))
   const logout = () => {
     Swal.fire({
       title: "Are you sure you want to logout?",
@@ -14,13 +15,8 @@ const HeaderBar = ({ username }) => {
       confirmButtonText: "Logout",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Successfully logout",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        handleLogout();
+        localStorage.removeItem("user")
       }
     });
   };
@@ -37,6 +33,7 @@ const HeaderBar = ({ username }) => {
 
   return (
     <div style={{ background: "#fff", padding: 0 }}>
+      {console.log(user)}
       <div
         style={{
           display: "flex",
@@ -55,7 +52,7 @@ const HeaderBar = ({ username }) => {
         </h1>
         <Dropdown overlay={menu} placement="bottomRight" trigger={["hover"]}>
           <span style={{ cursor: "pointer" }}>
-            <UserOutlined /> {username ? username : "Username"}
+            <UserOutlined /> {user ? user.username : "Username"}
           </span>
         </Dropdown>
       </div>

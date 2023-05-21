@@ -4,17 +4,23 @@ import { AuthorizeRoutes } from "./routes/routes/AuthorizeRoutes";
 import { Sidebar } from "./utils/layouts/sidebar/SideBar";
 import { PageLayout } from "./utils/layouts/pageLayout/PageLayout";
 import Dashboard from "./pages/dashboard/pages";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, Router } from "react-router-dom";
 function App() {
-  const [user, setUser] = useState(null);
-
+  const [user, setUser] = useState();
+  useEffect(() => {
+    const localUser = localStorage.getItem("user");
+    setUser(localUser)
+  }, [])
+  const handleLogin = (data) => {
+    setUser(JSON.stringify(data))
+  }
+  const handleLogout = () => {
+    setUser(null)
+  }
   return (
     <>
-        <button onClick={() => setUser(user ? null : "Wilson")}>
-          Test {user}
-        </button>
-        <AuthorizeRoutes user={user} />
+      <AuthorizeRoutes user={user} handleLogin={handleLogin} handleLogout={handleLogout} />
     </>
   );
 }

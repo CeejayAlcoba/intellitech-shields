@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Sidebar } from "../sidebar/SideBar";
 import { HeaderBar } from "../headerbar/HeaderBar";
 const { Header, Content, Footer } = Layout;
-const PageLayout = ({ children, user,title }) => {
+const PageLayout = ({ children, user, title, handleLogout }) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -16,7 +16,7 @@ const PageLayout = ({ children, user,title }) => {
     >
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
       <Layout className="overflow-auto" style={{ height: "100vh" }}>
-        <HeaderBar username={user} />
+        <HeaderBar handleLogout={handleLogout} />
         <Content
           style={{
             margin: "0 16px",

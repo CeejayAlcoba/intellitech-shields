@@ -16,7 +16,7 @@ import { EnvironmentalCondition } from "../../pages/Environment/pages";
 import { Location } from "../../pages/location/pages";
 import { EmergencyAlarm } from "../../pages/emergencyAlarm/pages";
 import { SignUp } from "../../pages/signup/pages";
-function AuthorizeRoutes({ user }) {
+function AuthorizeRoutes({ user, handleLogin, handleLogout }) {
   useEffect(() => {
     console.log(user);
   }, [user]);
@@ -25,7 +25,7 @@ function AuthorizeRoutes({ user }) {
       <Router>
         {user ? (
           <>
-            <PageLayout user={user}>
+            <PageLayout user={user} handleLogout={handleLogout}>
               <Routes>
                 <Route path="*" element={<Dashboard />} />
                 <Route path="/helmet-users" element={<HelmetUsers />} />
@@ -40,10 +40,10 @@ function AuthorizeRoutes({ user }) {
             </PageLayout>
           </>
         ) : (
-            <Routes>
-              <Route path="*" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-            </Routes>
+          <Routes>
+            <Route path="*" element={<Login handleLogin={handleLogin} />} />
+            <Route path="/signup" element={<SignUp handleLogin={handleLogin} />} />
+          </Routes>
         )}
       </Router>
     </>
