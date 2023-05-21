@@ -1,14 +1,37 @@
 import React from "react";
 import { Layout, Dropdown, Menu } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import Swal from "sweetalert2";
 
-const HeaderBar = () => {
+const HeaderBar = ({ username }) => {
+  const logout = () => {
+    Swal.fire({
+      title: "Are you sure you want to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Logout",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Successfully logout",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
   const menu = (
     <Menu>
       <Menu.Item key="1">Profile</Menu.Item>
       <Menu.Item key="2">Settings</Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="3">Logout</Menu.Item>
+      <Menu.Item key="3" onClick={() => logout()}>
+        Logout
+      </Menu.Item>
     </Menu>
   );
 
@@ -32,7 +55,7 @@ const HeaderBar = () => {
         </h1>
         <Dropdown overlay={menu} placement="bottomRight" trigger={["hover"]}>
           <span style={{ cursor: "pointer" }}>
-            <UserOutlined /> Username
+            <UserOutlined /> {username ? username : "Username"}
           </span>
         </Dropdown>
       </div>

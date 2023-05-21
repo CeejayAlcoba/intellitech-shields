@@ -6,6 +6,7 @@ import { BarChart } from "../../../utils/components/charts/barChart/BarChart";
 import { GaugePlot } from "../../../utils/components/charts/progressPlot/gaugePlot/GuagePlot";
 import { PageLayout } from "../../../utils/layouts/pageLayout/PageLayout";
 import { GeographicHeatmap } from "../../../utils/components/charts/heatMap/HeatMap";
+import { GraphChart } from "../../../utils/components/charts/graphChart/GraphChart";
 
 export default function Dashboard() {
   const data = [
@@ -21,9 +22,9 @@ export default function Dashboard() {
   ];
   return (
     <>
-      <div class="container">
-        {/* <div class="row">
-          <div class="col-md-6 border">
+      <div className="container">
+        {/* <div className="row">
+          <div className="col-md-6 border">
             <div className="w-100">
               <img
                 className="w-100"
@@ -32,50 +33,48 @@ export default function Dashboard() {
               />
             </div>
           </div>
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
               <div>
                 <Table data={data} columns={columns} />
               </div>
             </div>
-            <div class="col-6">
-              <div class="row">
-                <div class="col">col</div>
-                <div class="w-100"></div>
-                <div class="col">col3</div>
+            <div className="col-6">
+              <div className="row">
+                <div className="col">col</div>
+                <div className="w-100"></div>
+                <div className="col">col3</div>
               </div>
-              <div class="row">
-              <div class="col-sm-1 w-50 h-50">
+              <div className="row">
+              <div className="col-sm-1 w-50 h-50">
                 <PieChart />
               </div>
-              <div class="w-100"></div>
-              <div class="col-sm-1 w-50 h-50">
+              <div className="w-100"></div>
+              <div className="col-sm-1 w-50 h-50">
                 <BarChart />
               </div>
             </div>
             </div>
           </div>
         </div> */}
-        <div class="row">
-          <div class="col-7">
+        <div className="row">
+          <div className="col-7">
             <div className="w-100">
               <img
-                className="w-100"
+                className="w-100 rounded"
                 src="/images/example-photo.png"
                 alt="Image"
               />
             </div>
           </div>
-          <div class="col-4">
-            <PieChart />
+          <div className="col-4">
+            <GraphChart />
           </div>
-          <div class="w-100"></div>
-          <div class="col-7 mt-4">
+          <div className="w-100"></div>
+          <div className="col mt-4">
             <Table data={data} columns={columns} title={"Miners info"} />
           </div>
-          <div class="col-4">
-            <BarChart />
-          </div>
+          
         </div>
       </div>
     </>
