@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { Table } from "../../../utils/components/table/Table";
-
+import { AiOutlineUserAdd } from 'react-icons/ai';
+import { Button, Modal } from "antd";
+import { SignUp } from "../../signup/pages";
 function HelmetUsers(props) {
   const data = [
     {
@@ -38,7 +41,16 @@ function HelmetUsers(props) {
   ];
   return (
     <>
-      <Table data={data} columns={columns} title={"Helmet Users"} />
+      <Table
+        data={data}
+        columns={columns}
+        title={"Helmet Users"}
+      // isAddButton={true}
+      // buttonIcon={<AiOutlineUserAdd />}
+      // buttonTitle={"Create"}
+      // onClick={showModal}
+      />
+
     </>
   );
 }

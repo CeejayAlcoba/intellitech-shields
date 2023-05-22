@@ -16,6 +16,7 @@ import { EnvironmentalCondition } from "../../pages/Environment/pages";
 import { Location } from "../../pages/location/pages";
 import { EmergencyAlarm } from "../../pages/emergencyAlarm/pages";
 import { SignUp } from "../../pages/signup/pages";
+import { Users } from "../../pages/userAccounts/pages";
 function AuthorizeRoutes({ user, handleLogin, handleLogout }) {
   useEffect(() => {
     console.log(user);
@@ -28,6 +29,7 @@ function AuthorizeRoutes({ user, handleLogin, handleLogout }) {
             <PageLayout user={user} handleLogout={handleLogout}>
               <Routes>
                 <Route path="*" element={<Dashboard />} />
+                <Route path="/users" element={<Users />} />
                 <Route path="/helmet-users" element={<HelmetUsers />} />
                 <Route path="/sensors-data" element={<SensorsData />} />
                 <Route
